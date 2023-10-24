@@ -1,0 +1,78 @@
+﻿@page "/getStudentData"
+@using BlazorWebAPI.Models
+
+@inject HttpClient HttpClient
+
+<h3>Get Student Data</h3>
+
+<button @onclick="FetchData">Fetch Data</button>
+
+
+
+@if (students != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>StudentId</th>
+                <th>Gender</th>
+                <th>NationalITy</th>
+                <th>PlaceofBirth</th>
+                <th>StageId</th>
+                <th>GradeId</th>
+                <th>SectionId</th>
+                <th>Topic</th>
+                <th>Semester</th>
+                <th>Relation</th>
+                <th>Raisedhands</th>
+                <th>VisItedResources</th>
+                <th>AnnouncementsView</th>
+                <th>Discussion</th>
+                <th>ParentAnsweringSurvey</th>
+                <th>ParentschoolSatisfaction</th>
+                <th>StudentAbsenceDays</th>
+                <th>StudentMarks</th>
+                <th>Class</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in students)
+            {
+                <tr>
+                    <td>@student.StudentId</td>
+                    <td>@student.Gender</td>
+                    <td>@student.NationalIty</td>
+                    <td>@student.PlaceofBirth</td>
+                    <td>@student.StageId</td>
+                    <td>@student.GradeId</td>
+                    <td>@student.SectionId</td>
+                    <td>@student.Topic</td>
+                    <td>@student.Semester</td>
+                    <td>@student.Relation</td>
+                    <td>@student.Raisedhands</td>
+                    <td>@student.VisItedResources</td>
+                    <td>@student.AnnouncementsView</td>
+                    <td>@student.Discussion</td>
+                    <td>@student.ParentAnsweringSurvey</td>
+                    <td>@student.ParentschoolSatisfaction</td>
+                    <td>@student.StudentAbsenceDays</td>
+                    <td>@student.StudentMarks</td>
+                    <td>@student.Class</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    public IEnumerable<Student> students = null;
+
+    private async Task FetchData()
+    {
+       // students = await HttpClient.GetFromJsonAsync<IEnumerable<Student>>("http://localhost:5054/api/Student/getAllStudentData");
+         students = await HttpClient.GetFromJsonAsync<IEnumerable<Student>>("https://localhost:7150/api/Student/getAllStudentData");
+    
+    }
+}

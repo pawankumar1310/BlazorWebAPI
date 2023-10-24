@@ -1,0 +1,169 @@
+﻿@page "/addStudentData"
+@using BlazorWebAPI.Models
+@inject HttpClient HttpClient
+
+<link href="css/postStudentData.css" rel="stylesheet" />
+<h3>Add Student Data</h3>
+
+@* 
+@page "/addstudent"
+@using BlazorUI.Models
+
+<h3>Add Student</h3> *@
+
+
+<EditForm Model="@student" OnValidSubmit="AddStudentAsync" id="formPost">
+    <DataAnnotationsValidator/>
+    <div class="form-group">
+        <label for="studentId">Student ID:</label>
+        <input type="text" id="studentId" class="form-control" @bind="student.StudentId" required placeholder="StudentID must be in STDN00000 format." />
+        <ValidationMessage For="@(() => student.StudentId)" />
+    </div>
+
+    <div class="form-group">
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" class="form-control" @bind="student.Gender" required placeholder="Gender must be 'M' or 'F'" />
+        <ValidationMessage For="@(() => student.Gender)" />
+    </div>
+
+    <div class="form-group">
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" class="form-control" @bind="student.NationalIty" required placeholder="Nationality must only contain Alphabets and White Space" />
+        <ValidationMessage For="@(() => student.NationalIty)" />
+    </div>
+
+    <div class="form-group">
+        <label for="placeOfBirth">Place of Birth:</label>
+        <input type="text" id="placeOfBirth" class="form-control" @bind="student.PlaceofBirth" required placeholder="PlaceOfBirth must only contain Alphabets and White Space." />
+        <ValidationMessage For="@(() => student.PlaceofBirth)" />
+    </div>
+
+    <div class="form-group">
+        <label for="stageId">Stage ID:</label>
+        <input type="text" id="stageId" class="form-control" @bind="student.StageId" required placeholder="StageID must be 'loverlevel' or 'MiddleSchool' or 'HighSchool'." />
+        <ValidationMessage For="@(() => student.StageId)" />
+    </div>
+
+    <div class="form-group">
+        <label for="gradeId">Grade ID:</label>
+        <input type="text" id="gradeId" class="form-control" @bind="student.GradeId" required placeholder="GradeID must be G-00 format." />
+        <ValidationMessage For="@(() => student.GradeId)" />
+    </div>
+
+    <div class="form-group">
+        <label for="sectionId">Section ID:</label>
+        <input type="text" id="sectionId" class="form-control" @bind="student.SectionId" required placeholder="SectionID must be 'A' or 'C'." />
+        <ValidationMessage For="@(() => student.SectionId)" />
+    </div>
+
+    <div class="form-group">
+        <label for="topic">Topic:</label>
+        <input type="text" id="topic" class="form-control" @bind="student.Topic" required placeholder="Topic must only contain Alphabets." />
+        <ValidationMessage For="@(() => student.Topic)" />
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="semester">Semester:</label>
+        <input type="text" id="semester" class="form-control" @bind="student.Semester" required placeholder="Semester must be 'F' or 'S'." />
+        <ValidationMessage For="@(() => student.Semester)" />
+    </div>
+
+    <div class="form-group">
+        <label for="relation">Relation:</label>
+        <input type="text" id="relation" class="form-control" @bind="student.Relation" required placeholder="Relation must be 'Father' or 'Mum'." />
+        <ValidationMessage For="@(() => student.Relation)" />
+    </div>
+
+    <div class="form-group">
+        <label for="raisedHands">Raised Hands:</label>
+        <input type="number" id="raisedHands" class="form-control" @bind="student.Raisedhands" required placeholder="RaisedHands must be a number between 0 - 999." />
+        <ValidationMessage For="@(() => student.Raisedhands)" />
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="visitedResources">Visited Resources:</label>
+        <input type="number" id="visitedResources" class="form-control" @bind="student.VisItedResources" required placeholder="VisitedResources must be a number between 0 - 999." />
+        <ValidationMessage For="@(() => student.VisItedResources)" />
+    </div>
+
+
+    <div class="form-group">
+        <label for="announcementsView">Announcements View:</label>
+        <input type="number" id="announcementsView" class="form-control" @bind="student.AnnouncementsView" required placeholder="AnnouncementsView must be a number between 0 - 999." />
+        <ValidationMessage For="@(() => student.AnnouncementsView)" />
+    </div>
+
+    <div class="form-group">
+        <label for="discussion">Discussion:</label>
+        <input type="number" id="discussion" class="form-control" @bind="student.Discussion" required placeholder="Discussion must be a number between 0 - 999." />
+        <ValidationMessage For="@(() => student.Discussion)" />
+    </div>
+
+    <div class="form-group">
+        <label for="parentAnsweringSurvey">Parent Answering Survey:</label>
+        <input type="text" id="parentAnsweringSurvey" class="form-control" @bind="student.ParentAnsweringSurvey" required placeholder="ParentAnsweringSurvey must be 'Yes' or 'No'." />
+        <ValidationMessage For="@(() => student.ParentAnsweringSurvey)" />
+    </div>
+
+    <div class="form-group">
+        <label for="parentSchoolSatisfaction">Parent School Satisfaction:</label>
+        <input type="text" id="parentSchoolSatisfaction" class="form-control" @bind="student.ParentschoolSatisfaction" required placeholder="ParentSchoolSatisfaction must be 'Good' or 'Bad'." />
+        <ValidationMessage For="@(() => student.ParentschoolSatisfaction)" />
+    </div>
+
+    <div class="form-group">
+        <label for="studentAbsenceDays">Student Absence Days:</label>
+        <input type="text" id="studentAbsenceDays" class="form-control" @bind="student.StudentAbsenceDays" required placeholder="StudentAbsenceDays must be 'Under-7' or 'Above-7'." />
+        <ValidationMessage For="@(() => student.StudentAbsenceDays)" />
+    </div>
+
+    <div class="form-group">
+        <label for="studentMarks">Student Marks:</label>
+        <input type="number" id="studentMarks" class="form-control" @bind="student.StudentMarks" required placeholder="StudentMarks must be a number between 0 - 100." />
+        <ValidationMessage For="@(() => student.StudentMarks)" />
+    </div>
+
+    <div class="form-group">
+        <label for="class">Class:</label>
+        <input type="text" id="class" class="form-control" @bind="student.Class" required placeholder="Class must be 'M' or 'L' or 'H'." />
+        <ValidationMessage For="@(() => student.Class)" />
+    </div>
+
+    <button class="btn btn-primary" type="submit" >Add Student</button>
+
+</EditForm>
+
+
+@if (!string.IsNullOrEmpty(postMessage))
+{
+    <div class="alert alert-success mt-3">@postMessage</div>
+}
+
+
+
+@code {
+    private Student student = new Student();
+    public string postMessage { get; set; }
+
+
+    private async Task AddStudentAsync()
+    {
+        //var httpClient = new HttpClient();
+        var response = await HttpClient.PostAsJsonAsync("https://localhost:7150/api/Student/AddStudentData", student);
+
+        if (response.IsSuccessStatusCode)
+        {
+            postMessage = "Student data posted successfully.";
+        }
+        else
+        {
+            postMessage = "Error posting student data. Status Code: " + response.StatusCode;
+        }
+    }
+}
+
+

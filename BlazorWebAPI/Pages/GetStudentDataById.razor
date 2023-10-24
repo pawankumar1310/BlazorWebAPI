@@ -1,0 +1,138 @@
+﻿@page "/getStudentByID"
+@using BlazorWebAPI.Models
+
+@inject HttpClient HttpClient
+
+<label for="studentId">Enter Student ID:</label>
+<input type="text" id="studentId" @bind="studentId" required/>
+<button @onclick="FetchStudentById">Fetch Student by ID</button>
+
+<div style="margin:5px;padding:10px;text-align:center; color: red">
+    <h6>@messgae</h6>
+</div>
+
+
+@if (selectedStudent != null)
+{
+
+    <div style="text-align:center;">
+        <h4>Selected Student</h4>
+        <table border="1" style="margin-left:auto;margin-right:auto;background-color:white">
+            <tbody>
+                <tr>
+                    <td>Student ID</td>
+                    <td>@selectedStudent.StudentId </td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td> @selectedStudent.Gender</td>
+                </tr>
+                <tr>
+                    <td>Nationality</td>
+                    <td>@selectedStudent.NationalIty</td>
+                </tr>
+                <tr>
+                    <td>PlaceOfBirth</td>
+                    <td>@selectedStudent.PlaceofBirth</td>
+                </tr>
+                <tr>
+                    <td>StageID</td>
+                    <td>@selectedStudent.StageId</td>
+                </tr>
+                <tr>
+                    <td>GradeID</td>
+                    <td>@selectedStudent.GradeId</td>
+                </tr>
+                <tr>
+                    <td>SectionID</td>
+                    <td>@selectedStudent.SectionId</td>
+                </tr>
+                <tr>
+                    <td>Topic</td>
+                    <td>@selectedStudent.Topic</td>
+                </tr>
+                <tr>
+                    <td>Semester</td>
+                    <td>@selectedStudent.Semester</td>
+                </tr>
+                <tr>
+                    <td>Relation</td>
+                    <td>@selectedStudent.Relation</td>
+                </tr>
+                <tr>
+                    <td>RaisedHands</td>
+                    <td>@selectedStudent.Raisedhands</td>
+                </tr>
+                <tr>
+                    <td>VisitedResources</td>
+                    <td>@selectedStudent.VisItedResources</td>
+                </tr>
+                <tr>
+                    <td>AnnouncementsView</td>
+                    <td>@selectedStudent.AnnouncementsView</td>
+                </tr>
+                <tr>
+                    <td>Discussion</td>
+                    <td>@selectedStudent.Discussion</td>
+                </tr>
+                <tr>
+                    <td>ParentAnsweringSurvey</td>
+                    <td>@selectedStudent.ParentAnsweringSurvey</td>
+                </tr>
+                <tr>
+                    <td>ParentschoolSatisfaction</td>
+                    <td>@selectedStudent.ParentschoolSatisfaction</td>
+                </tr>
+                <tr>
+                    <td>StudentAbsenceDays</td>
+                    <td>@selectedStudent.StudentAbsenceDays</td>
+                </tr>
+                <tr>
+                    <td>StudentMarks</td>
+                    <td>@selectedStudent.StudentMarks</td>
+                </tr>
+                <tr>
+                    <td>Classes</td>
+                    <td>@selectedStudent.Class</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+}
+
+
+
+@code {
+    public IEnumerable<Student> students = null;
+    public string studentId { get; set; }
+    public Student selectedStudent { get; set; } = null;
+    public string messgae = string.Empty;
+    private async Task FetchStudentById()
+    {
+
+        try
+        {
+
+            if (!string.IsNullOrEmpty(studentId))
+            {
+                //selectedStudent = await HttpClient.GetFromJsonAsync<Student>($"http://localhost:5054/api/Student/getStudentDataById?studentId={studentId}");
+                selectedStudent = await HttpClient.GetFromJsonAsync<Student>($"https://localhost:7150/api/Student/getStudentDataById?id={studentId}");
+            }
+            else
+            {
+                selectedStudent = null;
+                messgae = "Student Id must be required";
+                return;
+            }
+
+            messgae = "";
+        }
+        catch (Exception ex)
+        {
+            selectedStudent = null;
+            messgae = "Student Id is Invalid Please try again.... StudentID must be in STDN00000 format.";
+        }
+        
+    }
+}

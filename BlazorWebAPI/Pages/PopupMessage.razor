@@ -1,0 +1,24 @@
+﻿<link href="css/PopupMessage.css" rel="stylesheet" />
+
+<div class="popup-message @(showPopup ? "show" : "")">
+    <div class="popup-content">
+        <span>@message</span>
+        <button @onclick="ClosePopup">Close</button>
+    </div>
+</div>
+
+@code {
+    private bool showPopup = false;
+    private string message = "";
+
+    public void ShowMessage(string message)
+    {
+        this.message = message;
+        showPopup = true;
+    }
+
+    private void ClosePopup()
+    {
+        showPopup = false;
+    }
+}

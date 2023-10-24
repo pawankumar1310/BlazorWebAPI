@@ -1,0 +1,241 @@
+﻿@page "/updateStudentData"
+@using BlazorWebAPI.Models
+@inject HttpClient HttpClient
+
+
+
+<h3>Update Student Data</h3>
+
+
+
+<div class="form-group">
+    <label for="studentId">Enter Student ID:</label>
+    <input type="text" class="form-control" id="studentId" @bind="studentId" placeholder="StudentID must be in STDN00000 format." />
+    <button class="btn btn-primary" @onclick="CheckStudentId">Check Student ID</button>
+</div>
+
+
+
+@if (isStudentIdValid)
+{
+    @* <form @onsubmit="UpdateStudent"> *@
+    <EditForm Model="@updatedStudent" OnValidSubmit="UpdateStudent">
+        <DataAnnotationsValidator/>
+        <div class="form-group">
+            <label for="studentId">Student ID:</label>
+            <input type="text" class="form-control" id="studentId" @bind="updatedStudent.StudentId" placeholder="Enter Student_ID" disabled />
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <input type="text" class="form-control" @bind="updatedStudent.Gender" placeholder="Enter Gender" required />
+            <ValidationMessage For="@(() => updatedStudent.Gender)" />
+        </div>
+
+        <div class="form-group">
+            <label for="Nationlity">Nationlity</label>
+            <input type="text" name="Nationlity" class="form-control" id="Nationlity" @bind="updatedStudent.NationalIty"
+                   placeholder="Enter Nationlity" required />
+            <ValidationMessage For="@(() => updatedStudent.NationalIty)" />
+        </div>
+
+        <div class="form-group">
+            <label for="PlaceOfBirth">PlaceOfBirth</label>
+            <input type="text" name="PlaceOfBirth" class="form-control" id="PlaceOfBirth" @bind="updatedStudent.PlaceofBirth"
+                   placeholder="Enter PlaceOfBirth" required />
+            <ValidationMessage For="@(() => updatedStudent.PlaceofBirth)" />
+        </div>
+
+        <div class="form-group">
+            <label for="StageId">StageId</label>
+            <input type="text" name="StageId" class="form-control" id="StageId" @bind="updatedStudent.StageId" placeholder="Enter StageId" required />
+            <ValidationMessage For="@(() => updatedStudent.StageId)" />
+        </div>
+        <div class="form-group">
+            <label for="GradeId">GradeId</label>
+            <input required type="text" name="GradeId" class="form-control" id="GradeId" @bind="updatedStudent.GradeId" placeholder="Enter GradeId" />
+            <ValidationMessage For="@(() => updatedStudent.GradeId)" />
+        </div>
+
+        <div class="form-group">
+            <label for="SectionId">SectionId</label>
+            <input required type="text" name="SectionId" class="form-control" id="SectionId" @bind="updatedStudent.SectionId"
+                   placeholder="Enter SectionId" />
+            <ValidationMessage For="@(() => updatedStudent.SectionId)" />
+        </div>
+
+        <div class="form-group">
+            <label for="Topic">Topic</label>
+            <input required type="text" name="Topic" class="form-control" id="Topic" @bind="updatedStudent.Topic" placeholder="Enter Topic" />
+            <ValidationMessage For="@(() => updatedStudent.Topic)" />
+        </div>
+        <div class="form-group">
+            <label for="Semester">Semester </label>
+            <input required type="text" name="Semester" class="form-control" id="Semester" @bind="updatedStudent.Semester"
+                   placeholder="Enter Semester" />
+            <ValidationMessage For="@(() => updatedStudent.Semester)" />
+        </div>
+
+        <div class="form-group">
+            <label for="Relation">Relation</label>
+            <input required type="text" name="Relation" class="form-control" id="Relation" @bind="updatedStudent.Relation"
+                   placeholder="Enter Relation" />
+            <ValidationMessage For="@(() => updatedStudent.Relation)" />
+        </div>
+
+        <div class="form-group">
+            <label for="RaisedHands">RaisedHands</label>
+            <input required type="text" name="RaisedHands" class="form-control" id="RaisedHands" @bind="updatedStudent.Raisedhands"
+                   placeholder="Enter RaisedHands" />
+            <ValidationMessage For="@(() => updatedStudent.Raisedhands)" />
+        </div>
+
+        <div class="form-group">
+            <label for="VisitedResources">VisitedResources</label>
+            <input required type="text" name="VisitedResources" class="form-control" id="VisitedResources" @bind="updatedStudent.VisItedResources"
+                   placeholder="Enter VisitedResources" />
+            <ValidationMessage For="@(() => updatedStudent.VisItedResources)" />
+        </div>
+
+        <div class="form-group">
+            <label for="AnnouncementsView">AnnouncementsView</label>
+            <input required type="text" name="AnnouncementsView" class="form-control" id="AnnouncementsView" @bind="updatedStudent.AnnouncementsView"
+                   placeholder="Enter AnnouncementsView" />
+            <ValidationMessage For="@(() => updatedStudent.AnnouncementsView)" />
+        </div>
+
+        <div class="form-group">
+            <label for="Discussion ">Discussion</label>
+            <input required type="text" name="Discussion" class="form-control" id="Discussion" @bind="updatedStudent.Discussion"
+                   placeholder="Enter Discussion" />
+            <ValidationMessage For="@(() => updatedStudent.Discussion)" />
+        </div>
+
+        <div class="form-group">
+            <label for="ParentAnsweringSurvey">ParentAnsweringSurvey</label>
+            <input required type="text" name="ParentAnsweringSurvey" class="form-control" id="ParentAnsweringSurvey" @bind="updatedStudent.ParentAnsweringSurvey"
+                   placeholder="Enter ParentAnsweringSurvey" />
+            <ValidationMessage For="@(() => updatedStudent.ParentAnsweringSurvey)" />
+        </div>
+
+        <div class="form-group">
+            <label for="ParentschoolSatisfaction">ParentschoolSatisfaction</label>
+            <input required type="text" name="ParentschoolSatisfaction" class="form-control"
+                   id="ParentschoolSatisfaction" @bind="updatedStudent.ParentschoolSatisfaction" placeholder="Enter ParentschoolSatisfaction" />
+            <ValidationMessage For="@(() => updatedStudent.ParentschoolSatisfaction)" />
+        </div>
+
+        <div class="form-group">
+            <label for="StudentAbsenceDays ">StudentAbsenceDays </label>
+            <input required type="text" name="StudentAbsenceDays" class="form-control" id="StudentAbsenceDays" @bind="updatedStudent.StudentAbsenceDays"
+                   placeholder="Enter StudentAbsenceDays" />
+            <ValidationMessage For="@(() => updatedStudent.StudentAbsenceDays)" />
+        </div>
+
+        <div class="form-group">
+            <label for="StudentMarks ">StudentMarks </label>
+            <input required type="text" name="StudentMarks" class="form-control" id="StudentMarks" @bind="updatedStudent.StudentMarks"
+                   placeholder="Enter StudentMarks" />
+            <ValidationMessage For="@(() => updatedStudent.StudentMarks)" />
+        </div>
+
+        <div class="form-group">
+            <label for="Classes">Classes</label>
+            <input type="text" name="Classes" class="form-control" id="Classes" @bind="updatedStudent.Class" placeholder="Enter Classes" />
+            <ValidationMessage For="@(() => updatedStudent.Class)" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </EditForm>
+}
+else if (showErrorMessage)
+{
+    <div class="alert alert-danger mt-3">Invalid Student ID. Please check and try again.</div>
+}
+
+
+
+@if (!string.IsNullOrEmpty(updateMessage))
+{
+    <div class="alert alert-success mt-3">@updateMessage</div>
+}
+
+
+
+@code {
+    public Student updatedStudent { get; set; } = new Student();
+    public string updateMessage { get; set; }
+    public string studentId { get; set; }
+    public bool isStudentIdValid { get; set; } = false;
+    public bool showErrorMessage { get; set; } = false;
+
+
+
+    private async Task CheckStudentId()
+    {
+        // Assume GetStudentFromApi is a method that fetches student data from your API
+        var student = await GetStudentFromApi(studentId);
+
+
+
+        if (student != null)
+        {
+            updatedStudent = student;
+            isStudentIdValid = true;
+            showErrorMessage = false;
+        }
+        else
+        {
+            isStudentIdValid = false;
+            showErrorMessage = true;
+        }
+    }
+
+
+
+    private async Task UpdateStudent()
+    {
+        try
+        {
+            var response = await HttpClient.PutAsJsonAsync($"https://localhost:7150/api/Student/updateStudentData/{updatedStudent.StudentId}", updatedStudent);
+            if (response.IsSuccessStatusCode)
+            {
+                updateMessage = "Student data updated successfully.";
+            }
+            else
+            {
+                updateMessage = "Error updating student data.";
+            }
+        }
+        catch (Exception ex)
+        {
+            updateMessage = "An error occurred: " + ex.Message;
+        }
+    }
+
+
+
+    // Example of GetStudentFromApi method
+    private async Task<Student> GetStudentFromApi(string studentId)
+    {
+        try
+        {
+            var response = await HttpClient.GetAsync($"https://localhost:7150/api/Student/getStudentDataById?id={studentId}");
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                var student = await response.Content.ReadFromJsonAsync<Student>();
+                return student;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions (e.g., network error, API error)
+            return null;
+        }
+    }
+}

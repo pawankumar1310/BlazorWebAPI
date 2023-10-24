@@ -1,0 +1,131 @@
+﻿
+<div class="top-row ps-5 navbar navbar-dark">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="">SMS</a>
+
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+
+    <nav class="flex-column">
+
+        <div class="nav-item px-3">
+
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+
+            </NavLink>
+
+        </div>
+
+
+
+        <div class="nav-item px-3">
+
+            <NavLink class="nav-link" href="getStudentData">
+
+                <span class="oi oi-list-rich" aria-hidden="true"></span> GetStudentData
+
+            </NavLink>
+
+        </div>
+
+        <div class="nav-item px-3">
+
+            <NavLink class="nav-link" href="getStudentByID">
+
+                <span class="oi oi-list-rich" aria-hidden="true"></span> GetStudentByID
+
+            </NavLink>
+
+        </div>
+
+        <div class="nav-item px-3">
+
+            <NavLink class="nav-link" href="deleteStudentData">
+
+                <span class="oi oi-list-rich" aria-hidden="true"></span> DeleteStudentData
+
+            </NavLink>
+
+        </div>
+
+        <div class="nav-item px-3">
+
+            <NavLink class="nav-link" href="addStudentData">
+
+                <span class="oi oi-list-rich" aria-hidden="true"></span> AddStudentData
+
+            </NavLink>
+
+        </div>
+
+        <div class="nav-item px-3">
+
+            <NavLink class="nav-link" href="updateStudentData">
+
+                <span class="oi oi-list-rich" aria-hidden="true"></span> UpdateStudentData
+
+            </NavLink>
+
+        </div>
+
+         <div class="nav-item px-3">
+
+            <NavLink class="nav-link" href="updateStudentData">
+
+                <span class="oi oi-list-rich" aria-hidden="true"></span> DatabaseSeeding
+
+            </NavLink>
+
+        </div>
+
+        <div class="nav-item px-3">
+
+            <NavLink class="nav-link" href="updateStudentData">
+
+                <span class="oi oi-list-rich" aria-hidden="true"></span> DownlodaXLFile
+
+            </NavLink>
+
+        </div>
+
+        <div class="nav-item px-3">
+
+            <NavLink class="nav-link" href="updateStudentData">
+
+                <span class="oi oi-list-rich" aria-hidden="true"></span> DatabaseTruncation
+
+            </NavLink>
+
+        </div>
+
+    </nav>
+
+</div>
+
+
+
+@code {
+
+    private bool collapseNavMenu = true;
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+}

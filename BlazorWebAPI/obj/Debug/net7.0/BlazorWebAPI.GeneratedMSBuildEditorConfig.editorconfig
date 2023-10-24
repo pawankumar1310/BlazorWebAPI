@@ -1,0 +1,65 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = BlazorWebAPI
+build_property.RootNamespace = BlazorWebAPI
+build_property.ProjectDir = E:\DotNet_Practice\TAG\BlazorWebAPI\BlazorWebAPI\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\DotNet_Practice\TAG\BlazorWebAPI\BlazorWebAPI
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/DeleteStudentData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlU3R1ZGVudERhdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/GetStudentData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2V0U3R1ZGVudERhdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/GetStudentDataById.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2V0U3R1ZGVudERhdGFCeUlkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/PopupMessage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9wdXBNZXNzYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/PostStudentData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9zdFN0dWRlbnREYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/UpdateStudentData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBkYXRlU3R1ZGVudERhdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-yt4i8ocfg1
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-hcmvo6lwfv
