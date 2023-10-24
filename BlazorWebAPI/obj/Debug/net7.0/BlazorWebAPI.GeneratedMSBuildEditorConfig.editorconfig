@@ -20,8 +20,20 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/DatabaseSeeding.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YWJhc2VTZWVkaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/DataBaseTruncate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUJhc2VUcnVuY2F0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/DeleteStudentData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlU3R1ZGVudERhdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/DownlodaXLFile.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG93bmxvZGFYTEZpbGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DotNet_Practice/TAG/BlazorWebAPI/BlazorWebAPI/Pages/GetStudentData.razor]

@@ -13,6 +13,7 @@
 @code {
     public string studentId { get; set; }
     public string deletionMessage { get; set; }
+
     private async Task DeleteStudent()
     {
         try
@@ -29,14 +30,17 @@
                 {
                     deletionMessage = $"Error occurred while deleting student with ID {studentId}.";
                 }
-
-
+            }
+            else
+            {
+                deletionMessage = "Student Id must be required";
+                return;
             }
         }
         catch (Exception ex)
         {
 
-            deletionMessage = $"Error occurred while deleting student with ID {studentId}.";
+            deletionMessage = "Student Id is Invalid Please try again.... StudentID must be in STDN00000 format.";
         }
     }
 }

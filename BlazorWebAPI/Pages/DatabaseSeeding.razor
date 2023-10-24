@@ -1,0 +1,48 @@
+﻿@page "/databaseSeeding"
+@using System.Net.Http
+@using Microsoft.AspNetCore.Components.Forms
+
+<h3>Upload Csv File For Database Seeding</h3>
+
+<InputFile OnChange="OnInputFileChange" />
+
+<button @onclick="UploadFile">Submit</button>
+
+@if (!string.IsNullOrEmpty(uploadStatus))
+{
+    <p>@uploadStatus</p>
+}
+
+@code {
+    private IBrowserFile file;
+    private string uploadStatus;
+
+    private async Task UploadFile()
+    {
+        if (file != null)
+        {
+            var formData = new MultipartFormDataContent();
+            formData.Add(new StreamContent(file.OpenReadStream()), "file", file.Name);
+
+            using (var httpClient = new HttpClient())
+            {
+                var response = await httpClient.PostAsync("https://localhost:7078/api/Student/ImportCsv", formData);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    uploadStatus = "File uploaded successfully.";
+                }
+                else
+                {
+                    uploadStatus = "Error uploading the file. Status code: " + response.StatusCode;
+                }
+            }
+        }
+    }
+
+    private void OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        file = e.File;
+        uploadStatus = null; 
+    }
+}

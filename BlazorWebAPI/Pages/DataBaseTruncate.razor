@@ -1,0 +1,38 @@
+﻿﻿
+@page "/databaseTruncation"
+@inject HttpClient httpClient
+
+<h3>Truncate Database</h3>
+
+<p>This will delete all records from the database. Are you sure you want to proceed?</p>
+
+<button class="btn btn-danger" @onclick="TruncateDatabase">Truncate Database</button>
+
+@if (isDeleted)
+{
+    <p> @deletedStudentId.</p>
+}
+
+@code {
+    private string studentId="All records has been Deleted";
+    private bool isDeleted = false;
+    private string deletedStudentId = "";
+
+    private async Task TruncateDatabase()
+    {
+        var response = await httpClient.DeleteAsync("https://localhost:7078/api/Student/database");
+
+        if (response.IsSuccessStatusCode)
+        {
+            isDeleted = true;
+            deletedStudentId = studentId;
+            
+        }
+        else
+        {
+            isDeleted = false;
+            deletedStudentId = "Error!";
+        }
+
+    }
+}

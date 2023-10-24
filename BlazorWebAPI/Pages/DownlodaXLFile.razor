@@ -1,0 +1,43 @@
+﻿﻿
+@page "/downlodaXLFile"
+@inject IJSRuntime JSRuntime
+
+<h3>Download Students as Excel</h3>
+
+<button class="btn btn-primary" @onclick="DownloadExcel">Download Excel</button>
+@if(isSuccess)
+{
+    <p>@a </p>
+}
+@code {
+    string a = "";
+    string b;
+    bool isSuccess=false;
+    private async Task DownloadExcel()
+    {
+
+        var apiUrl = "https://localhost:7150/export";
+
+
+        using (var httpClient = new HttpClient())
+        {
+
+            var response = await httpClient.GetAsync(apiUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsByteArrayAsync();
+                await JSRuntime.InvokeVoidAsync("downloadFile", "students.xlsx", content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                isSuccess = true;
+                b = "Downloaded";
+                a = b;
+            }
+            else
+            {
+                b = "Error!";
+                a = b;
+
+            }
+        }
+    }
+}
