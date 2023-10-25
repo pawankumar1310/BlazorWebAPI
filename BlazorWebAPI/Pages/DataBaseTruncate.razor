@@ -20,7 +20,7 @@
 
     private async Task TruncateDatabase()
     {
-        var response = await httpClient.DeleteAsync("https://localhost:7078/api/Student/database");
+        var response = await httpClient.DeleteAsync("https://localhost:7150/Truncate");
 
         if (response.IsSuccessStatusCode)
         {
