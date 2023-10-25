@@ -1,8 +1,9 @@
-﻿﻿
+﻿
 @page "/databaseTruncation"
-@inject HttpClient httpClient
+@inject HttpClient HttpClient
+@inject IJSRuntime JSRuntime
 
-<h3>Truncate Database</h3>
+@* ﻿<h3>Truncate Database</h3>
 
 <p>This will delete all records from the database. Are you sure you want to proceed?</p>
 
@@ -35,4 +36,110 @@
         }
 
     }
+} *@
+
+@* @page "/deleteStudentData"
+@using BlazorWebAPI.Models
+@inject HttpClient HttpClient *@
+
+@*@<label for="studentId">Enter Student ID:</label>
+<input type="text" id="studentId" @bind="studentId" />
+<button @onclick="DeleteStudent">Delete Student</button>
+
+<div style="margin:5px;padding:10px;text-align:center; color: red">
+    <p>@deletionMessage</p>
+</div>
+
+@code {
+    public string studentId { get; set; }
+    public string deletionMessage { get; set; }
+
+    private async Task DeleteStudent()
+    {
+        try
+        {
+            if (!string.IsNullOrEmpty(studentId))
+            {
+                var response = await HttpClient.DeleteAsync($"https://localhost:7150/api/Student/deleteStudentData?id={studentId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    deletionMessage = $"Student with ID {studentId} was deleted successfully";
+                }
+                else
+                {
+                    deletionMessage = $"Error occurred while deleting student with ID {studentId}.";
+                }
+            }
+            else
+            {
+                deletionMessage = "Student Id must be required";
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+
+            deletionMessage = "Student Id is Invalid Please try again.... StudentID must be in STDN00000 format.";
+        }
+    }
 }
+ *@
+
+
+<h3>Truncate Database</h3>
+
+<p>This will delete all records from the database. Are you sure you want to proceed?</p>
+
+<button class="btn btn-danger" @onclick="ShowDeleteConfirmationModal">Truncate Database</button>
+
+
+@if (isDeleted)
+{
+    <p>Database truncated successfully.</p>
+}
+
+<BlazorWebAPI.Pages.Modals.CustomModals @bind-IsVisible="isModalVisible" Title="Delete Confirmation">
+    <div>
+        Are you sure you want to delete the All Student Data from table?
+    </div>
+    <button class="btn btn-danger" @onclick="DeleteStudentAsync">Yes</button>
+    <button class="btn btn-primary" @onclick="CloseDeleteConfirmationModal">No</button>
+</BlazorWebAPI.Pages.Modals.CustomModals>
+
+
+@code {
+    public string studentId { get; set; }
+    private bool isDeleted = false;
+    private string deletedStudentId = "";
+    private bool isModalVisible = false;
+
+    private async Task ShowDeleteConfirmationModal()
+    {
+        isModalVisible = true;
+    }
+
+    private async Task CloseDeleteConfirmationModal()
+    {
+        isModalVisible = false;
+    }
+
+    private async Task DeleteStudentAsync()
+    {
+        var response = await HttpClient.DeleteAsync("https://localhost:7150/Truncate");
+        if (response.IsSuccessStatusCode)
+        {
+            isDeleted = true;
+            deletedStudentId = studentId;
+            isModalVisible = false;
+            await JSRuntime.InvokeVoidAsync("alert", "Database truncated successfully.");
+
+        }
+        else
+        {
+            deletedStudentId = "Doesn't Exist";
+            await JSRuntime.InvokeVoidAsync("alert", "Error truncating database.");
+        }
+    }
+}
+

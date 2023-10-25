@@ -2,7 +2,7 @@
 @using BlazorWebAPI.Models
 @inject HttpClient HttpClient
 
-<label for="studentId">Enter Student ID:</label>
+@*@<label for="studentId">Enter Student ID:</label>
 <input type="text" id="studentId" @bind="studentId" />
 <button @onclick="DeleteStudent">Delete Student</button>
 
@@ -44,3 +44,58 @@
         }
     }
 }
+ *@
+
+
+<h3>Delete Student</h3>
+
+<p>Enter the Student ID you want to delete:</p>
+
+<input type="text" @bind="studentId" />
+<button class="btn btn-danger" @onclick="ShowDeleteConfirmationModal">Delete</button>
+
+@if (isDeleted)
+{
+    <p>Student with ID @deletedStudentId has been deleted.</p>
+}
+
+<BlazorWebAPI.Pages.Modals.CustomModals @bind-IsVisible="isModalVisible" Title="Delete Confirmation">
+    <div>
+        Are you sure you want to delete the student with ID @studentId?
+    </div>
+    <button class="btn btn-danger" @onclick="DeleteStudentAsync">Yes</button>
+    <button class="btn btn-primary" @onclick="CloseDeleteConfirmationModal">No</button>
+</BlazorWebAPI.Pages.Modals.CustomModals>
+
+@code {
+    private string studentId;
+    private bool isDeleted = false;
+    private string deletedStudentId = "";
+    private bool isModalVisible = false;
+
+    private async Task ShowDeleteConfirmationModal()
+    {
+        isModalVisible = true;
+    }
+
+    private async Task CloseDeleteConfirmationModal()
+    {
+        isModalVisible = false;
+    }
+
+    private async Task DeleteStudentAsync()
+    {
+        var response = await HttpClient.DeleteAsync($"https://localhost:7150/api/Student/deleteStudentData?id={studentId}");
+        if (response.IsSuccessStatusCode)
+        {
+            isDeleted = true;
+            deletedStudentId = studentId;
+            isModalVisible = false; 
+        }
+        else
+        {
+            deletedStudentId = "Doesn't Exist Or ";
+        }
+    }
+}
+
