@@ -1,0 +1,37 @@
+﻿@page "/login"
+@* @page "/login/{message}" *@
+
+<h3>Login</h3>
+
+
+<form>
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" @bind="username" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" @bind="password" class="form-control" />
+    </div>
+    <button type="button" class="btn btn-primary" @onclick="LoginUser">Login</button>
+</form>
+
+@code {
+    private string username;
+    private string password;
+    NavigationManager navigationManager ;
+
+    private async Task LoginUser()
+    {
+        if (username == "example" && password == "password")
+        {
+            // Authentication successful
+            navigationManager.NavigateTo("/dashboard"); // Redirect to the dashboard upon successful login
+        }
+        else
+        {
+            // Authentication failed
+            navigationManager.NavigateTo("/login/Invalid login credentials");
+        }
+    }
+}

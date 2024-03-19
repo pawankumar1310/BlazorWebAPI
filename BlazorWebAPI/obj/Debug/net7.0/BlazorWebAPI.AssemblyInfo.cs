@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlazorWebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b0b78c92b8c90e670bac9b83ccb3b67e5443f95")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlazorWebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlazorWebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

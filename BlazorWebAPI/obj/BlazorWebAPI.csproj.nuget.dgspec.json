@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\DotNet_Practice\\TAG\\BlazorWebAPI\\BlazorWebAPI\\BlazorWebAPI.csproj": {}
+    "D:\\TAG\\DotnetPracticeRepo\\BlazorWebAPI_SP\\BlazorWebAPI\\BlazorWebAPI.csproj": {}
   },
   "projects": {
-    "E:\\DotNet_Practice\\TAG\\BlazorWebAPI\\BlazorWebAPI\\BlazorWebAPI.csproj": {
+    "D:\\TAG\\DotnetPracticeRepo\\BlazorWebAPI_SP\\BlazorWebAPI\\BlazorWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\DotNet_Practice\\TAG\\BlazorWebAPI\\BlazorWebAPI\\BlazorWebAPI.csproj",
+        "projectUniqueName": "D:\\TAG\\DotnetPracticeRepo\\BlazorWebAPI_SP\\BlazorWebAPI\\BlazorWebAPI.csproj",
         "projectName": "BlazorWebAPI",
-        "projectPath": "E:\\DotNet_Practice\\TAG\\BlazorWebAPI\\BlazorWebAPI\\BlazorWebAPI.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "E:\\DotNet_Practice\\TAG\\BlazorWebAPI\\BlazorWebAPI\\obj\\",
+        "projectPath": "D:\\TAG\\DotnetPracticeRepo\\BlazorWebAPI_SP\\BlazorWebAPI\\BlazorWebAPI.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\TAG\\DotnetPracticeRepo\\BlazorWebAPI_SP\\BlazorWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -48,6 +53,10 @@
               "target": "Package",
               "version": "[5.2.9, )"
             },
+            "Microsoft.AspNetCore.Components.Authorization": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
               "version": "[7.0.11, )"
@@ -60,6 +69,24 @@
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[5.1.1, )"
+            },
+            "Microsoft.NET.ILLink.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.100-1.23211.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.100-1.23211.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NET.Sdk.WebAssembly.Pack": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )",
+              "autoReferenced": true
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -80,7 +107,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[7.0.11, 7.0.11]"
+              "version": "[7.0.16, 7.0.16]"
             }
           ],
           "frameworkReferences": {
@@ -88,7 +115,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
